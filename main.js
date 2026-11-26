@@ -10,6 +10,7 @@ context.fillRect(0, 0, canvas.width, canvas.height);
 let draw_color = "black";
 let draw_width = 2;
 let is_drawing = false;
+let is_erasing = false;
 
 let restore_array = [];
 let index = -1;
@@ -37,7 +38,7 @@ function start(event) {
 function draw(event) {
     if(is_drawing) {
         context.lineTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
-        context.strokeStyle = draw_color;
+        context.strokeStyle = is_erasing ? start_background_color : draw_color;
         context.lineWidth = draw_width;
         context.lineCap = "round";
         context.lineJoin = "round";
@@ -79,4 +80,8 @@ function undo_last() {
         restore_array.pop();
         context.putImageData(restore_array[index], 0, 0);
     }
+}
+
+function eraser() {
+    draw_color = "white";
 }
