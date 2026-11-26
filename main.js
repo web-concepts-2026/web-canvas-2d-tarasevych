@@ -1,5 +1,5 @@
 const canvas = document.getElementById("canvas");
-canvas.width = window.innerWidth - 60;
+canvas.width = canvas.parentElement.clientWidth;
 canvas.height = 600;
 
 let context = canvas.getContext("2d");
@@ -60,8 +60,6 @@ function stop(event) {
         restore_array.push(context.getImageData(0, 0, canvas.width, canvas.height));
         index += 1;
     }
-
-    console.log(restore_array);
 }
 
 function clear_canvas() {
