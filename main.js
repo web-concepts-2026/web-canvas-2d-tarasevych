@@ -17,6 +17,7 @@ let index = -1;
 
 function change_color(element) {
     draw_color = element.style.background;
+    is_erasing = false;
 }
 
 canvas.addEventListener("touchstart", start, false);
@@ -82,6 +83,11 @@ function undo_last() {
     }
 }
 
+function set_draw() {
+    is_erasing = false;
+}
+
+
 function eraser() {
-    draw_color = "white";
+    is_erasing = true;
 }
