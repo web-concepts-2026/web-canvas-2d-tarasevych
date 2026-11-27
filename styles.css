@@ -59,7 +59,7 @@ canvas {
     background: white;
     font-weight: bold;
     margin: 0 10px;
-    border-radius: 10%;
+    border-radius: 5%;
 }
 
 .color-picker {
