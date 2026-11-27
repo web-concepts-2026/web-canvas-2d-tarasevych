@@ -71,3 +71,11 @@ canvas {
     align-self: center;
     margin: 0 10px;
 }
+
+.stamp_icon{
+    font-size: 38px;
+    color: white;
+    cursor: pointer;
+    margin-left: 10px;
+    line-height: 1;
+}
