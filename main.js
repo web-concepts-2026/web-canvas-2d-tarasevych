@@ -19,7 +19,10 @@ let index = -1;
 
 function change_color(element) {
     draw_color = element.style.background;
-    is_erasing = false;
+    if (is_erasing) {
+        is_erasing = false;
+        set_active(document.querySelector(".tools .button"));
+    }
 }
 
 canvas.addEventListener("touchstart", start, false);
@@ -91,37 +94,50 @@ function undo_last() {
     }
 }
 
-function set_draw() {
+function set_active(element) {
+    document.querySelectorAll(".button, .stamp_icon").forEach(el => {
+        el.classList.remove("active");
+    });
+    element.classList.add("active");
+}
+
+function set_draw(element) {
     is_erasing = false;
     is_stamping = false;
+    set_active(element);
 }
 
 
-function eraser() {
+function eraser(element) {
     is_erasing = true;
     is_stamping = false;
+    set_active(element);
 }
 
-function stamp_star() {
+function stamp_star(element) {
     is_erasing = false;
     is_stamping = true;
     current_stamp = "★";
+    set_active(element);
 }
 
-function stamp_flower() {
+function stamp_flower(element) {
     is_erasing = false;
     is_stamping = true;
     current_stamp = "✿";
+    set_active(element);
 }
 
-function stamp_snow(){
+function stamp_snow(element){
     is_erasing = false;
     is_stamping = true;
     current_stamp = "❄";
+    set_active(element);
 }
 
-function stamp_cloud(){
+function stamp_cloud(element){
     is_erasing = false;
     is_stamping = true;
     current_stamp = "☁";
+    set_active(element);
 }
