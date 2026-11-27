@@ -45,7 +45,6 @@ canvas {
     display: inline-block;
     box-sizing: border-box;
     border-radius: 50%;
-    border: 2px solid white;
     align-self: center;
     margin: 0 4px;
 }
