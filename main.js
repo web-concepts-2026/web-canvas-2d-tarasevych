@@ -11,6 +11,7 @@ let draw_color = "black";
 let draw_width = 2;
 let is_drawing = false;
 let is_erasing = false;
+let is_stamping = false;
 
 let restore_array = [];
 let index = -1;
@@ -30,9 +31,17 @@ canvas.addEventListener("mouseup", stop, false);
 canvas.addEventListener("mouseout", stop, false);
 
 function start(event) {
-    is_drawing = true;
-    context.beginPath();
-    context.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+    if (is_stamping) {
+        context.fillStyle = draw_color;
+        context.font = (draw_width * 2 + 15) + "px sans-serif";
+        context.textAling = "center";
+        context.textBaseLine = "middle";
+        context.fillText("★", event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop)
+    } else {
+        is_drawing = true;
+        context.beginPath();
+        context.moveTo(event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop);
+    }
     event.preventDefault();
 }
 
@@ -83,9 +92,16 @@ function undo_last() {
 
 function set_draw() {
     is_erasing = false;
+    is_stamping = false;
 }
 
 
 function eraser() {
     is_erasing = true;
+    is_stamping = false;
+}
+
+function stamp_star() {
+    is_erasing = false;
+    is_stamping = true;
 }
