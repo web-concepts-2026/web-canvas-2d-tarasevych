@@ -12,6 +12,7 @@ let draw_width = 2;
 let is_drawing = false;
 let is_erasing = false;
 let is_stamping = false;
+let current_stamp = "★";
 
 let restore_array = [];
 let index = -1;
@@ -36,7 +37,7 @@ function start(event) {
         context.font = (draw_width * 2 + 15) + "px sans-serif";
         context.textAling = "center";
         context.textBaseLine = "middle";
-        context.fillText("★", event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop)
+        context.fillText(current_stamp, event.clientX - canvas.offsetLeft, event.clientY - canvas.offsetTop)
     } else {
         is_drawing = true;
         context.beginPath();
@@ -104,4 +105,23 @@ function eraser() {
 function stamp_star() {
     is_erasing = false;
     is_stamping = true;
+    current_stamp = "★";
+}
+
+function stamp_flower() {
+    is_erasing = false;
+    is_stamping = true;
+    current_stamp = "✿";
+}
+
+function stamp_snow(){
+    is_erasing = false;
+    is_stamping = true;
+    current_stamp = "❄";
+}
+
+function stamp_cloud(){
+    is_erasing = false;
+    is_stamping = true;
+    current_stamp = "☁";
 }
