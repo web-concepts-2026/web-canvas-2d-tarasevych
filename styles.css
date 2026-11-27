@@ -79,3 +79,12 @@ canvas {
     margin-left: 10px;
     line-height: 1;
 }
+
+.tools .button.active {
+    background: gray;
+    border-color: darkgray;
+}
+
+.stamp_icon.active {
+    color: grey;
+}
